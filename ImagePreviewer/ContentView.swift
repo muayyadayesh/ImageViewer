@@ -8,9 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isPresenting = false
     var body: some View {
-        Text("Hello, world!")
+        
+        VStack(alignment :.center){
+            Spacer()
+            Text("Tap here to present").onTapGesture {
+                self.isPresenting.toggle()
+            }
             .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            
+            Spacer()
+            
+            Text("SwiftUI images viewer\n\(Text("Muayyad Ayesh").font(Font.body.bold()))").multilineTextAlignment(.center)
+        }
+        .frame(width: UIScreen.main.bounds.width)
+        .PanelView(isPresenting: $isPresenting, Image: Image("Trial"), Description: "© Rose image, 2021")
+        
     }
 }
 
